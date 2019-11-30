@@ -1,0 +1,22 @@
+{% extends 'base_layout.html' %}
+
+
+{% block content %}
+    {% include "partials/__header.html" %}
+
+    {% for category in categories %}
+      <a href="{% url 'category' category.slug %}">{{category.name}}</a>
+      <hr>
+    {% endfor %}
+
+    {% for article in articles %}
+    <br>  
+        <h1><a href="{% url 'article' article.slug %}">{{article.title}}</a></h1>
+        <p>{{article.slug}}</p>
+        <img src="{{article.thumbnail.url}}" style="width: 300px; height: 100px;" alt="">
+    <br>
+
+    {% endfor %}
+
+    {% include "partials/__footer.html" %}
+{% endblock content %}
